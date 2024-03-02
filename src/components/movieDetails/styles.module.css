@@ -1,0 +1,19 @@
+.container{
+  display: flex;
+  justify-content:flex-start;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.list{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.text{
+  display: block;
+  max-width: 500px;
+  margin-top: 10px;
+}

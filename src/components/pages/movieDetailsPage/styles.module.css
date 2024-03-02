@@ -1,0 +1,23 @@
+.container{
+  padding: 50px 15px;
+}
+.navList{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 30px;
+
+ 
+  margin-top: 30px;
+}
+.navLink{
+  font-size: 18px;
+  font-weight: 700;
+  color: black;
+}
+.active{
+  font-size: 18px;
+  font-weight: 700;
+  color: rgb(89, 89, 255);
+}

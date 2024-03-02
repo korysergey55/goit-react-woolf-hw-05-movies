@@ -1,0 +1,57 @@
+.container{
+  padding: 50px 15px;
+}
+.image{
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin-right: 20px;
+}
+.form{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 285px;
+  max-width: 600px;
+  
+  /* border: 1px solid red; */
+  border-radius: 3px;
+  overflow: hidden;
+   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+.button{
+  display: inline-block;
+  width: 80px;
+  height: 48px;
+
+  border-radius: 3px;
+  border: 0;
+  }
+.button:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+.button:hover .icon{
+  stroke:  rgb(57, 57, 57);
+}
+.icon{
+  stroke: #000000;
+  transition:  stroke 250ms cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+.input{
+  display: inline-block;
+  width: 100%;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.input::placeholder {
+  font: inherit;
+  font-size: 18px;
+}
