@@ -1,0 +1,11 @@
+.list{
+  margin-top: 20px
+}
+.title{
+  margin-top: 20px;
+}
+.text{
+  display: block;
+  margin-top: 10px;
+  max-width: 900px;
+}

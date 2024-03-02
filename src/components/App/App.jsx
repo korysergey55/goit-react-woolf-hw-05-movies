@@ -10,7 +10,6 @@ import NotFoundPage from 'components/pages/notFoundPage/NotFoundPage';
 import ReviewsPage from 'components/pages/reviewsPage/ReviewsPage';
 import CastPage from 'components/pages/castPage/CastPage';
 
-
 export const App = () => {
   return (
     <div className={styles.container}>

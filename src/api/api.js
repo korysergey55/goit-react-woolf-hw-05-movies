@@ -47,4 +47,29 @@ const geCastAPI = async (id) => {
   }
 }
 
-export { getTrendingMoviesAPI, getMovieByIdAPI, geCastAPI }
+const geReviewsAPI = async (id) => {
+  try {
+    const { data } = await axios.get(`${BASE_URL}/movie/${id}/reviews?${searchParams}`)
+    return data
+  }
+  catch (error) {
+    toast.error(`${error.message}`, {
+      theme: 'colored',
+    })
+  }
+}
+
+const geMuviesQueryAPI = async (query) => {
+  try {
+    const { data } = await axios.get(`${BASE_URL}search/movie?${searchParams}&query=${query}`)
+    return data
+  }
+  catch (error) {
+    toast.error(`${error.message}`, {
+      theme: 'colored',
+    })
+  }
+}
+
+
+export { getTrendingMoviesAPI, getMovieByIdAPI, geCastAPI, geReviewsAPI, geMuviesQueryAPI }

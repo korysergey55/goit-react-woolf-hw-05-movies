@@ -16,7 +16,7 @@ const MovieDetails = ({ data }) => {
             {data.title} {data.release_date}
           </h2>
           <p className={styles.text}>
-            User score: {data.vote_average * 10} %
+            User score: {(data.vote_average * 10).toFixed()} %
           </p>
         </li>
         <li className={styles.item}>
@@ -27,8 +27,8 @@ const MovieDetails = ({ data }) => {
           <h2 className={styles.title}>Genres</h2>
           <ul className={styles.genderList}>
             {data.genres?.map((item) => (
-              <li key={item.id} className="item">
-                <p className="text">{item.name}</p>
+              <li key={item.id} className={styles.item}>
+                <p className={styles.text}>{item.name}</p>
               </li>
             ))}
           </ul>

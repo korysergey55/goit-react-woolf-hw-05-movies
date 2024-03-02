@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.css'
+
 import { useParams } from 'react-router-dom';
 import { geCastAPI } from 'api/api';
 import defaultImg from '../../../sourses/images/products/default.jpg'

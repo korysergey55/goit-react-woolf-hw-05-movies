@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 import { getTrendingMoviesAPI } from 'api/api'
 
 import MovieList from 'components/movieList/MovieList'
-import Loader from 'components/losder/Loader'
+import Loader from 'components/loader/Loader'
 
 const HomePage = () => {
   const [muvies, setMuvies] = useState([])

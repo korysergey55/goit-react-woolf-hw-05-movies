@@ -1,19 +1,38 @@
 import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import styles from './styles.module.css'
 import sprite from '../../../sourses/icons/sprite.svg'
 
+import { useSearchParams } from 'react-router-dom'
+import { geMuviesQueryAPI } from 'api/api'
+import MovieList from 'components/movieList/MovieList'
+
+
 const MoviesPage = () => {
   const [state, setState] = useState('')
+  const [muvies, setMuvies] = useState([])
   const [searchParams, setSearchParams] = useSearchParams()
 
   const query = searchParams.get("query");
-  // console.log('query', query)
 
   useEffect(() => {
-    if (!query) return
-    console.log('useEffect-query', query)
-  }, [state])
+    const getMuvieByQuery = async () => {
+      try {
+        const response = await geMuviesQueryAPI(query)
+        if (response) {
+          setMuvies(response.results)
+        }
+      }
+      catch (error) {
+        console.log(error)
+      }
+    }
+
+    if (query) {
+      getMuvieByQuery()
+
+    }
+
+  }, [query])
 
   const handleChange = (evt) => {
     setState(evt.target.value)
@@ -42,6 +61,7 @@ const MoviesPage = () => {
           </svg>
         </button>
       </form>
+      {muvies && < MovieList items={muvies} />}
     </div>
   );
 }

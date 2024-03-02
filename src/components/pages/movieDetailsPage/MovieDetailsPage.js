@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 import { NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
 import { getMovieByIdAPI } from 'api/api';
 
-import Loader from 'components/losder/Loader';
+import Loader from 'components/loader/Loader';
 import MovieDetails from 'components/movieDetails/MovieDetails';
 
 const MovieDetailsPage = () => {
