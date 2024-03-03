@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles.module.css'
 
 import { NavLink, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
@@ -13,6 +13,12 @@ const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const location = useLocation()
+
+  const goBack = useRef(location.state?.from ?? '/')
+
+  const handleBack = () => {
+    navigate(goBack.current);
+  };
 
   useEffect(() => {
 
@@ -46,7 +52,7 @@ const MovieDetailsPage = () => {
       <button
         className={styles.button}
         type='button'
-        onClick={() => navigate(location.state?.from?.pathname ? location.state.from.pathname : '/')}
+        onClick={handleBack}
       >
         Go Back
       </button>
