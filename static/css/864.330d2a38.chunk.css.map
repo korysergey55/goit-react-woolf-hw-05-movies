@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/864.330d2a38.chunk.css","mappings":"AAGA,yCACE,eACF,CACA,oBACE,aAAc,CACd,eAAgB,CAChB,eACF","sources":["components/pages/reviewsPage/styles.module.css"],"sourcesContent":[".list{\n  margin-top: 20px\n}\n.title{\n  margin-top: 20px;\n}\n.text{\n  display: block;\n  margin-top: 10px;\n  max-width: 900px;\n}"],"names":[],"sourceRoot":""}
