@@ -14,7 +14,7 @@ const CastPage = () => {
     const getCastInfo = async () => {
       try {
         const response = await geCastAPI(movieID)
-        if (response) {
+        if (response.cast.length > 0) {
           setCasts(response.cast)
         }
       }
@@ -30,21 +30,28 @@ const CastPage = () => {
 
   return (
     <div className={styles.container}>
-      {casts &&
-        <ul className={styles.list}>
-          {casts.map((cast) => (
-            <li key={cast.id} className={styles.item}>
-              <p className={styles.text}>{cast.character ? cast.character : "Actor"}</p>
-              <div className={styles.imageWripper}>
-                <img
-                  src={cast.profile_path ? `https://image.tmdb.org/t/p/w92/${cast.profile_path}` : defaultImg}
-                  alt="actor"
-                  className={styles.image}
-                />
-              </div>
-            </li>
-          ))}
-        </ul>}
+      {casts.length > 0 ?
+        (
+          <ul className={styles.list}>
+            {casts.map((cast) => (
+              <li key={cast.id} className={styles.item}>
+                <p className={styles.text}>{cast.character ? cast.character : "Actor"}</p>
+                <div className={styles.imageWripper}>
+                  <img
+                    src={cast.profile_path ? `https://image.tmdb.org/t/p/w92/${cast.profile_path}` : defaultImg}
+                    alt="actor"
+                    className={styles.image}
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+        )
+        :
+        (
+          <p className={styles.text}>We dont hawe any casts for this muvie!</p>
+        )
+      }
     </div >
   );
 }

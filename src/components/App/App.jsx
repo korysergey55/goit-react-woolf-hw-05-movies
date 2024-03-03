@@ -7,14 +7,6 @@ import Header from 'components/header/Header';
 import Loader from 'components/loader/Loader';
 import Footer from 'components/footer/Footer';
 
-
-// import HomePage from 'components/pages/homePage/HomePage';
-// import MoviesPage from 'components/pages/moviesPage/MoviesPage';
-// import MovieDetailsPage from 'components/pages/movieDetailsPage/MovieDetailsPage';
-// import NotFoundPage from 'components/pages/notFoundPage/NotFoundPage';
-// import ReviewsPage from 'components/pages/reviewsPage/ReviewsPage';
-// import CastPage from 'components/pages/castPage/CastPage';
-
 const HomePage = lazy(() => import('components/pages/homePage/HomePage'))
 const MoviesPage = lazy(() => import('components/pages/moviesPage/MoviesPage'))
 const MovieDetailsPage = lazy(() => import('components/pages/movieDetailsPage/MovieDetailsPage'))
@@ -28,13 +20,13 @@ export const App = () => {
       <Header></Header>
       <Suspense fallback={<Loader />}>
         <Routes>
-          <Route exact={true} path={'/'} element={<HomePage />} />
-          <Route exact={true} path={'/movies'} element={<MoviesPage />} />
-          <Route exact={true} path={'/movies/:movieID'} element={<MovieDetailsPage />} >
-            <Route exact={true} path={'cast'} element={<CastPage />} />
-            <Route exact={true} path={'reviews'} element={<ReviewsPage />} />
+          <Route path='/' element={<HomePage />} />
+          <Route path='/movies' element={<MoviesPage />} />
+          <Route path='/movies/:movieID' element={<MovieDetailsPage />} >
+            <Route path='cast' element={<CastPage />} />
+            <Route path='reviews' element={<ReviewsPage />} />
           </Route>
-          <Route exact={true} path={'*'} element={<NotFoundPage />} />
+          <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </Suspense>
       <Footer />

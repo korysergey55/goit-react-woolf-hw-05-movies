@@ -17,7 +17,8 @@ const HomePage = () => {
       try {
         setLoading(true)
         const res = await getTrendingMoviesAPI(page)
-        if (res) {
+
+        if (res.results.length > 0) {
           setMuvies((prev) => [...prev, ...res.results])
           setLoading(false)
         }
@@ -44,7 +45,7 @@ const HomePage = () => {
 
       {loading && <Loader />}
 
-      {muvies && <MovieList items={muvies} />}
+      {muvies.length > 0 && <MovieList items={muvies} />}
 
       {muvies.length > 0 && <button
         className={styles.button}

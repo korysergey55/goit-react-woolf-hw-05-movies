@@ -4,7 +4,6 @@ import styles from './styles.module.css'
 import { geReviewsAPI } from 'api/api';
 import { useParams } from 'react-router-dom';
 
-
 const ReviewsPage = () => {
   const { movieID } = useParams()
   const [reviews, setReviews] = useState([])
@@ -13,7 +12,7 @@ const ReviewsPage = () => {
     const getReviewsInfo = async () => {
       try {
         const response = await geReviewsAPI(movieID)
-        if (response) {
+        if (response.results.length > 0) {
           setReviews(response.results)
         }
       }
@@ -29,13 +28,13 @@ const ReviewsPage = () => {
 
   return (
     <ul className={styles.list}>
-      {reviews.length ? (reviews.map((review) => (
+      {reviews.length > 0 ? (reviews.map((review) => (
         <li className={styles.item} key={review.id}>
           <h3 className={styles.title}>Author: {review.author}</h3>
           <p className={styles.text}>{review.content}</p>
         </li>))
       ) : (
-        <p className={styles.text}>We dont hawe any reviws for this muvie!</p>
+        <li className={styles.item}>We dont hawe any reviws for this muvie!</li>
       )}
     </ul>
   );

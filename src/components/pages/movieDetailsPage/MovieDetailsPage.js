@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.css'
 
-import { NavLink, Outlet, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { getMovieByIdAPI } from 'api/api';
 
 import Loader from 'components/loader/Loader';
@@ -9,18 +9,21 @@ import MovieDetails from 'components/movieDetails/MovieDetails';
 
 const MovieDetailsPage = () => {
   const { movieID } = useParams()
-  const [muvieInfo, setMovieInfo] = useState()
+  const [muvieInfo, setMovieInfo] = useState({})
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
 
   useEffect(() => {
 
     const getMuvie = async () => {
       try {
         setLoading(true)
-        const res = await getMovieByIdAPI(movieID)
-        setMovieInfo(res)
-        setLoading(false)
+        const response = await getMovieByIdAPI(movieID)
+        if (Object.keys(response).length > 0) {
+          setMovieInfo(response)
+          setLoading(false)
+        }
       }
       catch (error) {
         console.log(error)
@@ -39,34 +42,40 @@ const MovieDetailsPage = () => {
   return (
     <div className={styles.container}>
       {loading && <Loader />}
+
       <button
         className={styles.button}
         type='button'
-        onClick={() => navigate('/')}
+        onClick={() => navigate(location.state?.from?.pathname ? location.state.from.pathname : '/')}
       >
         Go Back
       </button>
 
-      {muvieInfo && <MovieDetails data={muvieInfo} />}
+      {Object.keys(muvieInfo).length > 0
+        && <MovieDetails data={muvieInfo} />}
 
-      {muvieInfo && <ul className={styles.navList}>
-        <li className={styles.item}>
-          <NavLink
-            to={'cast'}
-            className={(navData) => navData.isActive ? styles.active : styles.navLink}
-          >
-            Cast
-          </NavLink>
-        </li>
-        <li className={styles}>
-          <NavLink
-            to={'reviews'}
-            className={(navData) => navData.isActive ? styles.active : styles.navLink}
-          >
-            Reviews
-          </NavLink>
-        </li>
-      </ul>}
+      {Object.keys(muvieInfo).length > 0
+        &&
+        <ul className={styles.navList}>
+          <li className={styles.item}>
+            <NavLink
+              to={'cast'}
+              className={(navData) => navData.isActive ? styles.active : styles.navLink}
+              state={{ from: location }}
+            >
+              Cast
+            </NavLink>
+          </li>
+          <li className={styles}>
+            <NavLink
+              to={'reviews'}
+              className={(navData) => navData.isActive ? styles.active : styles.navLink}
+              state={{ from: location }}
+            >
+              Reviews
+            </NavLink>
+          </li>
+        </ul>}
       <Outlet />
     </div>
 

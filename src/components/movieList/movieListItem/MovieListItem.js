@@ -2,15 +2,18 @@ import React from 'react'
 import styles from './styles.module.css'
 import defaultImg from '../../../sourses/images/products/default.jpg'
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const MovieListItem = ({ item }) => {
+  const location = useLocation()
+
   return (
     <li className={styles.item}>
       <Link
         className={styles.navLink}
         to={`/movies/${item.id}`}
         key={item.id}
+        state={{ from: location }}
       >
         <img
           className={styles.image}
@@ -22,7 +25,7 @@ const MovieListItem = ({ item }) => {
           alt={item.title}
         />
       </Link >
-    </li>
+    </li >
   );
 }
 
