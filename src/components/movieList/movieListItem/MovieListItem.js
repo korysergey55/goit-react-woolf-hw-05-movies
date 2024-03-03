@@ -12,7 +12,6 @@ const MovieListItem = ({ item }) => {
       <Link
         className={styles.navLink}
         to={`/movies/${item.id}`}
-        key={item.id}
         state={{ from: location }}
       >
         <img

@@ -7,7 +7,7 @@ const MovieList = ({ items }) => {
   return (
     <ul className={styles.list}>
       {items.map((item) => (
-        <MovieListItem item={item} key={uuidv4()} />
+        <MovieListItem item={item} key={item.id} />
       ))}
     </ul>
   );
