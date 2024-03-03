@@ -11,6 +11,7 @@ const MovieDetailsPage = () => {
   const { movieID } = useParams()
   const [muvieInfo, setMovieInfo] = useState({})
   const [loading, setLoading] = useState(false)
+
   const navigate = useNavigate()
   const location = useLocation()
 
