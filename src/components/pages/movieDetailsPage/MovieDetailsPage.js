@@ -6,6 +6,8 @@ import { getMovieByIdAPI } from 'api/api';
 
 import Loader from 'components/loader/Loader';
 import MovieDetails from 'components/movieDetails/MovieDetails';
+import Container from 'components/container/Container';
+
 
 const MovieDetailsPage = () => {
   const { movieID } = useParams()
@@ -47,7 +49,7 @@ const MovieDetailsPage = () => {
 
 
   return (
-    <div className={styles.container}>
+    <Container>
       {loading && <Loader />}
 
       <button
@@ -84,7 +86,7 @@ const MovieDetailsPage = () => {
           </li>
         </ul>}
       <Outlet />
-    </div>
+    </Container>
 
   );
 }

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import styles from './styles.module.css'
 
 import { useSearchParams } from 'react-router-dom'
 import { geMuviesQueryAPI } from 'api/api'
+
 import MovieList from 'components/movieList/MovieList'
 import SearchForm from 'components/searchForm/SearchForm'
+import Container from 'components/container/Container'
 
 const MoviesPage = () => {
   const [muvies, setMuvies] = useState([])
@@ -32,10 +33,10 @@ const MoviesPage = () => {
 
 
   return (
-    <div className={styles.container}>
+    <Container>
       <SearchForm />
       {muvies.length > 0 && < MovieList items={muvies} />}
-    </div>
+    </Container>
   );
 }
 

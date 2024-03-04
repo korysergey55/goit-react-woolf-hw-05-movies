@@ -5,6 +5,7 @@ import { getTrendingMoviesAPI } from 'api/api'
 
 import MovieList from 'components/movieList/MovieList'
 import Loader from 'components/loader/Loader'
+import Container from 'components/container/Container'
 
 const HomePage = () => {
   const [muvies, setMuvies] = useState([])
@@ -39,8 +40,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className={styles.container}>
-
+    <Container>
       <h2 className={styles.title}>Tranding today</h2>
 
       {loading && <Loader />}
@@ -54,8 +54,7 @@ const HomePage = () => {
       >
         Load more
       </button>}
-
-    </div>
+    </Container>
   );
 }
 
