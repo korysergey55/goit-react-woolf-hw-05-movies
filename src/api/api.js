@@ -60,8 +60,14 @@ const geReviewsAPI = async (id) => {
 }
 
 const geMuviesQueryAPI = async (query) => {
+  // searchParams.set('query', query)
   try {
     const { data } = await axios.get(`${BASE_URL}search/movie?${searchParams}&query=${query}`)
+    if (data.results.length === 0) {
+      toast.error(`We didn't find any films based on your request.`, {
+        theme: 'colored',
+      })
+    }
     return data
   }
   catch (error) {

@@ -15,6 +15,7 @@ const MoviesPage = () => {
   useEffect(() => {
     const getMuvieByQuery = async () => {
       try {
+        setMuvies([])
         const response = await geMuviesQueryAPI(query)
         if (response.results.length > 0) {
           setMuvies(response.results)
